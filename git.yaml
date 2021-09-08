@@ -1,0 +1,22 @@
+---
+- name: This playbook prepares AT's ACI fabric
+  hosts: apic
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: Pido todos los nodos
+      aci_fabric_node:
+        hostname:  "{{ inventory_hostname }}"
+        username: admin
+        password: Acunt1a.
+        validate_certs: no
+        state: query
+      delegate_to: localhost
+      register: vNodes
+
+    - debug:
+        msg: "{{ pV }}  "
+
+
